@@ -1,0 +1,49 @@
+{
+  "group": {
+    "name": "quickthread",
+    "title": "Quick Thread Settings",
+    "description": "Configure the XenForo-style quick thread feature"
+  },
+  "settings": [
+    {
+      "name": "quickthread_enabled",
+      "title": "Enable Quick Thread",
+      "description": "Enable or disable the Quick Thread feature globally.",
+      "optionscode": "yesno",
+      "value": "1",
+      "disporder": "1"
+    },
+    {
+      "name": "quickthread_showchooser",
+      "title": "Show Forum Chooser on Index",
+      "description": "Show a 'New Thread' button on the index page that opens a forum chooser overlay.",
+      "optionscode": "yesno",
+      "value": "1",
+      "disporder": "2"
+    },
+    {
+      "name": "quickthread_forums",
+      "title": "Enabled Forums",
+      "description": "Enter forum IDs separated by commas where Quick Thread should be enabled. Leave empty to enable for all forums.",
+      "optionscode": "text",
+      "value": "",
+      "disporder": "3"
+    },
+    {
+      "name": "quickthread_ajax_only",
+      "title": "AJAX Only Mode",
+      "description": "If enabled, thread creation will only work via AJAX. If disabled, users can also use the standard newthread form.",
+      "optionscode": "yesno",
+      "value": "0",
+      "disporder": "4"
+    },
+    {
+      "name": "quickthread_animate",
+      "title": "Enable Animations",
+      "description": "Enable smooth animations for the expanding form.",
+      "optionscode": "yesno",
+      "value": "1",
+      "disporder": "5"
+    }
+  ]
+}

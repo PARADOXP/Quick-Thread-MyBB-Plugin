@@ -1,0 +1,108 @@
+<div class="quick-thread-wrapper" id="quick-thread-{$fid}" data-fid="{$fid}" data-animate="{$quickthread_animate}" data-ajax="{$quickthread_ajax_mode}">
+    <form action="{$mybb->settings['bburl']}/newthread.php?fid={$fid}&processed=1" method="post"
+        enctype="multipart/form-data" class="quick-thread-form" id="quickthread_form_{$fid}" data-ajax-mode="{$quickthread_ajax_mode}">
+
+        <input type="hidden" name="my_post_key" value="{$mybb->post_code}" />
+        <input type="hidden" name="action" value="do_newthread" />
+        <input type="hidden" name="posthash" value="{$posthash}" />
+
+        <!-- Collapsed State -->
+        <div class="qt-collapsed">
+            <div class="qt-avatar">
+                {$mybb->user['avatar_formatted']}
+            </div>
+            <div class="qt-title-wrapper">
+                {$prefixselect}
+                <input type="text" name="subject" id="qt_subject_{$fid}" class="textbox qt-title-input"
+                    placeholder="{$lang->quickthread_title_placeholder}" autocomplete="off" />
+            </div>
+        </div>
+
+        <!-- Expanded State - Hidden by default, shown on focus -->
+        <div class="qt-expanded" id="qt_expanded_{$fid}" style="display: none !important;">
+            <!-- Tabs: Message | Poll -->
+            <div class="qt-tabs">
+                <button type="button" class="qt-tab qt-tab-active" data-tab="message">{$lang->quickthread_tab_message}</button>
+                <button type="button" class="qt-tab" data-tab="poll">{$lang->quickthread_tab_poll}</button>
+            </div>
+
+            <!-- Message Tab -->
+            <div class="qt-tab-content qt-tab-message">
+                <!-- Message Editor -->
+                <div class="qt-editor-wrapper">
+                    <label for="qt_message_{$fid}">{$lang->message}</label>
+                    {$message_textarea}
+                    {$codebuttons}
+                </div>
+            </div>
+
+            <!-- Poll Tab -->
+            <div class="qt-tab-content qt-tab-poll" style="display: none;">
+                <div class="qt-poll-wrapper">
+                    <label class="qt-poll-checkbox">
+                        <input type="checkbox" name="postpoll" value="1" {$postpollchecked} />
+                        <span>{$lang->quickthread_add_poll}</span>
+                    </label>
+                    <div class="qt-poll-options" style="{$poll_options_display}">
+                        <label>{$lang->quickthread_poll_options}:</label>
+                        <div class="qt-number-wrap">
+                            <input type="number" name="numpolloptions" value="{$numpolloptions}" min="2" max="{$maxpolloptions}" class="textbox" />
+                            <div class="qt-number-arrows">
+                                <span class="qt-arrow-up" data-numpoll-arrow="up"><i class="fas fa-chevron-up"></i></span>
+                                <span class="qt-arrow-down" data-numpoll-arrow="down"><i class="fas fa-chevron-down"></i></span>
+                            </div>
+                        </div>
+                        <span class="smalltext">{$lang->quickthread_poll_options_desc}</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Post Options -->
+            <div class="qt-options-section">
+                <div class="qt-options">
+                    <label class="qt-option">
+                        <input type="checkbox" name="postoptions[signature]" value="1" {$sig_checked} />
+                        <span>{$lang->post_signature}</span>
+                    </label>
+                    <label class="qt-option">
+                        <input type="checkbox" name="postoptions[subscriptionmethod]" value="subscribe" {$sub_checked} />
+                        <span>{$lang->subscribe_thread}</span>
+                    </label>
+                    <label class="qt-option">
+                        <input type="checkbox" name="postoptions[disablesmilies]" value="1" />
+                        <span>{$lang->disable_smilies}</span>
+                    </label>
+                </div>
+            </div>
+
+            <!-- Custom Fields -->
+            {$custom_fields}
+
+            <!-- Captcha for Guests -->
+            {$captcha}
+
+            <!-- Action Buttons -->
+            <div class="qt-actions">
+                <button type="submit" class="button qt-btn-primary" name="submit">
+                    {$lang->quickthread_post_thread}
+                </button>
+                <button type="button" class="button qt-btn-secondary qt-cancel">
+                    {$lang->quickthread_cancel}
+                </button>
+            </div>
+        </div>
+
+        <!-- Guest Notice -->
+        <div class="qt-guest-notice" id="qt_guest_notice_{$fid}" style="{$guest_notice_display}">
+            <a href="{$mybb->settings['bburl']}/member.php?action=login">{$lang->quickthread_login}</a>
+            {$lang->quickthread_or} <a
+                href="{$mybb->settings['bburl']}/member.php?action=register">{$lang->quickthread_register}</a>
+            {$lang->quickthread_to_post}
+        </div>
+    </form>
+</div>
+<script>
+    if (typeof QuickThread !== 'undefined') {
+        QuickThread.init({$fid});
+    }
+</script>

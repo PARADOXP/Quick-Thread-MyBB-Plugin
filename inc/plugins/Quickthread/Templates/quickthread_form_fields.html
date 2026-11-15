@@ -1,0 +1,46 @@
+<!-- Message Editor -->
+<div class="qt-editor-wrapper">
+    <label for="qt_message_{$fid}">{$lang->message}</label>
+    {$message_textarea}
+    {$codebuttons}
+</div>
+
+<!-- Post Options -->
+<div class="qt-options-section">
+    <div class="qt-options">
+        <label class="qt-option">
+            <input type="checkbox" name="postoptions[signature]" value="1" {$sig_checked} />
+            <span>{$lang->post_signature}</span>
+        </label>
+        <label class="qt-option">
+            <input type="checkbox" name="postoptions[subscriptionmethod]" value="subscribe" {$sub_checked} />
+            <span>{$lang->subscribe_thread}</span>
+        </label>
+        <label class="qt-option">
+            <input type="checkbox" name="postoptions[disablesmilies]" value="1" />
+            <span>{$lang->disable_smilies}</span>
+        </label>
+    </div>
+</div>
+
+<!-- Custom Fields (if any) -->
+{$custom_fields}
+
+<!-- Captcha for Guests -->
+{$captcha}
+
+<!-- Attachment Interface -->
+{$attachment_field}
+
+<!-- Action Buttons -->
+<div class="qt-actions">
+    <button type="submit" class="button qt-btn-primary" name="submit">
+        <span class="qt-icon qt-icon-write"></span> {$lang->quickthread_post_thread}
+    </button>
+    <button type="button" class="button qt-btn-secondary qt-more-options" data-fid="{$fid}">
+        {$lang->quickthread_more_options}
+    </button>
+    <button type="button" class="button qt-btn-cancel qt-cancel">
+        {$lang->quickthread_cancel}
+    </button>
+</div>

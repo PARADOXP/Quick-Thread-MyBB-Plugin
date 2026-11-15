@@ -1,0 +1,1172 @@
+/**
+ * Quick Thread CSS
+ * XenForo-style Quick Thread styling for MyBB
+ * 
+ * @author PARADOX
+ * @version 2.0
+ */
+
+/* ============================================================
+   QUICK THREAD FORM - MAIN CONTAINER
+   ============================================================ */
+
+.quick-thread-wrapper {
+    border: 1px solid #d4d4d5;
+    border-radius: 6px;
+    background: #ffffff;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+    transition: all 0.2s ease;
+    overflow: hidden;
+}
+
+/* COLLAPSED STATE */
+
+.qt-collapsed {
+    display: flex;
+    align-items: center;
+    padding: 14px 16px;
+    gap: 12px;
+}
+
+.qt-collapsed.qt-expanded-state {
+    border-bottom: 1px solid #e8e8e8;
+    background: #fafafa;
+}
+
+.qt-avatar {
+    flex-shrink: 0;
+}
+
+.qt-avatar img {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 2px solid #e8e8e8;
+}
+
+.qt-title-wrapper {
+    flex: 1;
+    display: flex;
+    gap: 10px;
+    align-items: center;
+}
+
+.qt-title-input {
+    flex: 1;
+    padding: 8px 14px !important;
+    border: 1px solid #d4d4d5 !important;
+    border-radius: 4px !important;
+    font-size: 14px !important;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, sans-serif !important;
+    background: #fff !important;
+    transition: all 0.2s ease;
+    outline: none !important;
+    height: 38px;
+    border-bottom-left-radius: 0 !important;
+    border-top-left-radius: 0 !important;
+}
+
+.qt-title-input:hover {
+    border-color: #b8b8b9 !important;
+}
+
+
+.qt-title-input::placeholder {
+    color: #999 !important;
+    opacity: 1 !important;
+}
+
+/* Prefix select styling */
+.qt-prefix {
+    display: inline-block;
+    padding: 9px;
+    margin-right: -11px;
+    border-top-right-radius: 0 !important;
+    border-bottom-right-radius: 0 !important;
+    border: 1px solid #d4d4d5;
+    border-radius: 4px;
+    font-size: 14px;
+    background: #fff;
+    cursor: pointer;
+    min-width: 100px;
+    transition: all 0.2s ease;
+    height: 38px;
+}
+
+.qt-prefix:focus {
+    border-color: #2185d0;
+    outline: none;
+}
+
+
+/* ============================================================
+   EXPANDED STATE
+   ============================================================ */
+
+.qt-expanded {
+    padding: 16px;
+    background: #fafafa;
+    opacity: 0;
+    transform: translateY(-10px);
+    transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+.qt-expanded.qt-visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.qt-loading-state {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 40px 20px;
+    color: #666;
+    font-size: 14px;
+    gap: 10px;
+}
+
+/* ============================================================
+   TABS (Message / Poll)
+   ============================================================ */
+
+.qt-tabs {
+    display: flex;
+    gap: 0;
+    margin-bottom: 16px;
+    border-bottom: 1px solid #e8e8e8;
+}
+
+.qt-tab {
+    padding: 10px 20px;
+    border: none;
+    background: #f5f5f5;
+    color: #666;
+    font-size: 14px;
+    font-weight: 500;
+    cursor: pointer;
+    border-bottom: 2px solid transparent;
+    transition: all 0.2s ease;
+    margin-bottom: -1px;
+}
+
+.qt-tab:first-child {
+    border-top-left-radius: 4px;
+}
+
+.qt-tab:last-of-type {
+    border-top-right-radius: 4px;
+}
+
+.qt-tab:hover {
+    color: #333;
+    background: #e8e8e8;
+}
+
+.qt-tab.qt-tab-active {
+    color: #2185d0;
+    border-bottom-color: #2185d0;
+    background: #fff;
+}
+
+.qt-tab-content {
+    margin-bottom: 16px;
+}
+
+/* Poll Tab */
+.qt-poll-wrapper {
+    padding: 16px;
+    background: #fff;
+    border: 1px solid #e8e8e8;
+    border-radius: 4px;
+}
+
+.qt-poll-checkbox {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 14px;
+    cursor: pointer;
+    margin-bottom: 12px;
+}
+
+.qt-poll-checkbox input[type="checkbox"] {
+    width: 18px;
+    height: 18px;
+    cursor: pointer;
+}
+
+.qt-poll-options {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+
+.qt-poll-options label {
+    font-size: 14px;
+    font-weight: 500;
+    color: #333;
+}
+
+.qt-number-wrap {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+}
+
+.qt-number-wrap .textbox {
+    width: 60px;
+    padding: 8px 24px 8px 8px;
+    text-align: center;
+    -moz-appearance: textfield;
+}
+
+.qt-number-wrap .textbox::-webkit-inner-spin-button,
+.qt-number-wrap .textbox::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+.qt-number-arrows {
+    position: absolute;
+    right: 2px;
+    top: 50%;
+    transform: translateY(-50%);
+    display: flex;
+    flex-direction: column;
+    line-height: 1;
+    opacity: 0.35;
+    transition: opacity 0.15s ease;
+}
+
+.qt-number-wrap:hover .qt-number-arrows {
+    opacity: 0.6;
+}
+
+.qt-number-arrows span {
+    display: block;
+    font-size: 8px;
+    line-height: 1.2;
+    cursor: pointer;
+    color: #444;
+    user-select: none;
+    padding: 1px 1px;
+    transition: color 0.15s ease;
+}
+
+.qt-number-arrows span i {
+    font-size: 8px;
+    font-weight: 900;
+}
+
+.qt-number-arrows span:hover {
+    color: #000;
+    opacity: 1;
+}
+
+.qt-poll-options .smalltext {
+    color: #888;
+    font-size: 12px;
+}
+
+/* ============================================================
+   EDITOR SECTION
+   ============================================================ */
+
+.qt-editor-wrapper {
+    margin-bottom: 16px;
+}
+
+.qt-editor-wrapper label {
+    display: block;
+    margin-bottom: 6px;
+    font-weight: 600;
+    font-size: 13px;
+    color: #333;
+}
+
+.qt-message {
+    width: 100%;
+    min-height: 120px;
+    max-height: 400px;
+    padding: 12px 14px;
+    border: 1px solid #d4d4d5;
+    border-radius: 4px;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, sans-serif;
+    font-size: 14px;
+    line-height: 1.5;
+    resize: vertical;
+    background: #fff;
+    transition: all 0.2s ease;
+    outline: none;
+}
+
+.qt-message:hover {
+    border-color: #b8b8b9;
+}
+
+
+.qt-message::placeholder {
+    color: #999;
+}
+
+/* ============================================================
+   POST OPTIONS
+   ============================================================ */
+
+.qt-options-section {
+    margin: 16px 0;
+    padding: 14px;
+    background: #fff;
+    border: 1px solid #e8e8e8;
+    border-radius: 4px;
+}
+
+.qt-options {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.qt-option {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 13px;
+    color: #555;
+    cursor: pointer;
+    user-select: none;
+    transition: color 0.2s ease;
+}
+
+.qt-option:hover {
+    color: #2185d0;
+}
+
+.qt-option input[type="checkbox"] {
+    width: 16px;
+    height: 16px;
+    cursor: pointer;
+    margin: 0;
+}
+
+/* ============================================================
+   ACTION BUTTONS
+   ============================================================ */
+
+.qt-actions {
+    display: flex;
+    gap: 10px;
+    padding-top: 16px;
+    border-top: 1px solid #e8e8e8;
+    background: #fff;
+    margin: 16px -16px -16px;
+    padding: 16px;
+}
+
+.qt-actions .button {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 10px 18px;
+    border: 1px solid #d4d4d5;
+    border-radius: 4px;
+    background: #fff;
+    color: #333;
+    font-size: 14px;
+    font-weight: 500;
+    cursor: pointer;
+    text-decoration: none;
+    transition: all 0.2s ease;
+    outline: none;
+}
+
+.qt-actions .button:hover {
+    background: #f8f8f8;
+    border-color: #b8b8b9;
+}
+
+.qt-actions .button:active {
+    transform: translateY(1px);
+}
+
+.qt-actions .button:focus {
+    box-shadow: 0 0 0 3px rgba(33, 133, 208, 0.1);
+}
+
+.qt-btn-primary {
+    background: #2185d0 !important;
+    color: #fff !important;
+    border-color: #2185d0 !important;
+}
+
+.qt-btn-primary:hover {
+    background: #1678c2 !important;
+    border-color: #1678c2 !important;
+}
+
+.qt-btn-primary:disabled {
+    background: #92c5e8 !important;
+    border-color: #92c5e8 !important;
+    cursor: not-allowed;
+}
+
+.qt-btn-secondary {
+    background: #fff !important;
+    color: #666 !important;
+}
+
+.qt-btn-cancel {
+    background: #fff !important;
+    color: #999 !important;
+}
+
+.qt-btn-cancel:hover {
+    color: #666 !important;
+}
+
+/* ============================================================
+   ICONS
+   ============================================================ */
+
+.qt-icon {
+    display: inline-block;
+    width: 14px;
+    height: 14px;
+}
+
+.qt-icon-write::before {
+    content: "\f044";
+    font-family: "Font Awesome 5 Free";
+    font-weight: 900;
+    font-size: 14px;
+}
+
+/* ============================================================
+   SPINNERS & LOADING STATES
+   ============================================================ */
+
+.qt-spinner,
+.qt-spinner-small {
+    display: inline-block;
+    width: 16px;
+    height: 16px;
+    border: 2px solid #e8e8e8;
+    border-top-color: #2185d0;
+    border-radius: 50%;
+    animation: qt-spin 0.8s linear infinite;
+}
+
+.qt-spinner-small {
+    width: 14px;
+    height: 14px;
+    border-width: 2px;
+}
+
+@keyframes qt-spin {
+    0% {
+        transform: rotate(0deg);
+    }
+
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+.qt-submitting {
+    opacity: 0.6;
+    pointer-events: none;
+}
+
+/* ============================================================
+   ERROR & SUCCESS MESSAGES
+   ============================================================ */
+
+.qt-errors {
+    background: #fff6f6;
+    border: 1px solid #e0b4b4;
+    border-left: 4px solid #db2828;
+    border-radius: 4px;
+    padding: 12px 16px;
+    margin-bottom: 16px;
+    color: #9f3a38;
+    animation: qt-shake 0.3s ease;
+}
+
+@keyframes qt-shake {
+
+    0%,
+    100% {
+        transform: translateX(0);
+    }
+
+    25% {
+        transform: translateX(-5px);
+    }
+
+    75% {
+        transform: translateX(5px);
+    }
+}
+
+.qt-error-item {
+    margin: 4px 0;
+    font-size: 13px;
+    line-height: 1.5;
+}
+
+.qt-error-item:first-child {
+    margin-top: 0;
+}
+
+.qt-error-item:last-child {
+    margin-bottom: 0;
+}
+
+.qt-notice {
+    padding: 12px 16px;
+    border-radius: 4px;
+    margin-bottom: 16px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 14px;
+}
+
+.qt-notice-success {
+    background: #fcfff5;
+    border: 1px solid #a3c293;
+    border-left: 4px solid #2c662d;
+    color: #2c662d;
+}
+
+.qt-notice-icon {
+    font-size: 16px;
+    font-weight: bold;
+}
+
+/* ============================================================
+   NEW THREAD HIGHLIGHT
+   ============================================================ */
+
+.qt-new-thread.qt-highlight {
+    background-color: #fffbdd !important;
+    animation: qt-highlight-fade 3s ease forwards;
+}
+
+@keyframes qt-highlight-fade {
+    0% {
+        background-color: #fffbdd;
+    }
+
+    100% {
+        background-color: transparent;
+    }
+}
+
+/* ============================================================
+   FORUM CHOOSER OVERLAY
+   ============================================================ */
+
+.qt-chooser-overlay {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.6);
+    z-index: 9999;
+    align-items: center;
+    justify-content: center;
+    animation: qt-overlay-fadein 0.2s ease;
+}
+
+@keyframes qt-overlay-fadein {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+.qt-chooser-content {
+    background: #fff;
+    border-radius: 8px;
+    max-width: 600px;
+    max-height: 85vh;
+    width: 90%;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+    animation: qt-modal-slidein 0.3s ease;
+}
+
+@keyframes qt-modal-slidein {
+    from {
+        transform: translateY(-30px);
+        opacity: 0;
+    }
+
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+.qt-chooser-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 18px 24px;
+    border-bottom: 1px solid #e8e8e8;
+    background: #3592de;
+}
+
+.qt-chooser-header h2 {
+    margin: 0;
+    font-size: 19px;
+    font-weight: 600;
+    color: #ffffff;
+}
+
+.qt-chooser-close {
+    background: none;
+    border: none;
+    font-size: 28px;
+    line-height: 1;
+    cursor: pointer;
+    color: #ffffff;
+    padding: 0;
+    width: 36px;
+    height: 36px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 4px;
+    transition: all 0.2s ease;
+}
+
+.qt-chooser-close:hover {
+    background: #f9f9f9;
+    color: #333;
+}
+
+.qt-chooser-close:active {
+    transform: scale(0.95);
+}
+
+.qt-chooser-body {
+    overflow-y: auto;
+    padding: 16px 20px;
+    flex: 1;
+}
+
+/* ============================================================
+   FORUM LIST
+   ============================================================ */
+
+.qt-category {
+    margin-bottom: 24px;
+}
+
+.qt-category:last-child {
+    margin-bottom: 0;
+}
+
+.qt-category-name {
+    font-size: 12px;
+    font-weight: 600;
+    text-transform: uppercase;
+    color: #999;
+    letter-spacing: 0.5px;
+    margin-bottom: 10px;
+    padding: 0 4px;
+}
+
+.qt-forum-list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.qt-forum-item {
+    margin-bottom: 6px;
+}
+
+.qt-forum-item:last-child {
+    margin-bottom: 0;
+}
+
+/* Sub-forum indentation */
+.qt-forum-item.qt-depth-1 {
+    margin-left: 40px;
+}
+
+/* Arrow icon for sub-forums */
+.qt-forum-item.qt-depth-1 > a::before {
+    content: "↳";
+    display: inline-block;
+    margin-right: 8px;
+    color: #999;
+    font-size: 16px;
+    font-weight: bold;
+}
+
+.qt-forum-item a {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 12px 16px;
+    border: 1px solid #e8e8e8;
+    border-radius: 6px;
+    text-decoration: none;
+    color: #333;
+    background: #fff;
+    transition: all 0.2s ease;
+}
+
+.qt-forum-item a:hover {
+    background: #f8f9fa;
+    border-color: #2185d0;
+    transform: translateX(4px);
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
+}
+
+.qt-forum-item a:active {
+    transform: translateX(2px);
+}
+
+.qt-forum-item.disabled a {
+    opacity: 0.5;
+    cursor: not-allowed;
+    pointer-events: none;
+    background: #fafafa;
+}
+
+.qt-forum-name {
+    font-weight: 500;
+    font-size: 14px;
+    color: #333;
+}
+
+.qt-forum-meta {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.qt-forum-threads {
+    font-size: 12px;
+    color: #999;
+    background: #f5f5f5;
+    padding: 4px 10px;
+    border-radius: 12px;
+}
+
+/* ============================================================
+   NEW THREAD BUTTON (INDEX)
+   ============================================================ */
+
+.qt-newthread-button {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 10px 20px;
+    margin-bottom: 6px;
+    background: #3376db;
+    color: #fff !important;
+    border-radius: 6px;
+    text-decoration: none !important;
+    font-weight: 500;
+    font-size: 14px;
+    box-shadow: 0 2px 4px rgba(33, 133, 208, 0.3);
+    transition: all 0.2s ease;
+    float: right;
+}
+
+.qt-newthread-button:hover {
+    background: #198ee1;
+    box-shadow: 0 3px 8px rgba(33, 133, 208, 0.4);
+    transform: translateY(-1px);
+}
+
+.qt-newthread-button:active {
+    transform: translateY(0);
+}
+
+/* ============================================================
+   NOTIFICATION (FALLBACK)
+   ============================================================ */
+
+.qt-notification {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    padding: 14px 20px;
+    border-radius: 6px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    z-index: 10000;
+    font-size: 14px;
+    animation: qt-notification-slidein 0.3s ease;
+}
+
+@keyframes qt-notification-slidein {
+    from {
+        transform: translateX(400px);
+        opacity: 0;
+    }
+
+    to {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+
+.qt-notification-success {
+    background: #21ba45;
+    color: #fff;
+}
+
+.qt-notification-error {
+    background: #db2828;
+    color: #fff;
+}
+
+.qt-notification-info {
+    background: #2185d0;
+    color: #fff;
+}
+
+/* ============================================================
+   RESPONSIVE DESIGN
+   ============================================================ */
+
+@media (max-width: 768px) {
+    .qt-collapsed {
+        flex-direction: column;
+        align-items: stretch;
+        padding: 12px;
+    }
+
+    .qt-avatar {
+        display: none;
+    }
+
+    .qt-title-wrapper {
+        flex-direction: column;
+    }
+
+    .qt-title-input,
+    .qt-prefix {
+        width: 100%;
+    }
+
+    .qt-expanded {
+        padding: 12px;
+    }
+
+    .qt-options {
+        flex-direction: column;
+        gap: 12px;
+    }
+
+    .qt-actions {
+        flex-direction: column;
+        gap: 8px;
+    }
+
+    .qt-actions .button {
+        width: 100%;
+        justify-content: center;
+    }
+
+    .qt-chooser-content {
+        width: 95%;
+        max-height: 90vh;
+        margin: 10px;
+    }
+
+    .qt-chooser-header {
+        padding: 14px 16px;
+    }
+
+    .qt-chooser-body {
+        padding: 12px 14px;
+    }
+
+    .qt-forum-item a {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 8px;
+    }
+
+    .qt-forum-meta {
+        width: 100%;
+        justify-content: flex-end;
+    }
+}
+
+@media (max-width: 480px) {
+    .qt-message {
+        min-height: 100px;
+        font-size: 13px;
+    }
+
+    .qt-actions .button {
+        padding: 9px 14px;
+        font-size: 13px;
+    }
+}
+
+/* ============================================================
+   DARK MODE SUPPORT (Optional)
+   ============================================================ */
+
+@media (prefers-color-scheme: dark) {
+    /* Add dark mode styles here if needed */
+}
+
+/* ============================================================
+   ACCESSIBILITY
+   ============================================================ */
+
+
+
+/* Skip keyboard navigation outline for mouse users */
+.qt-title-input:focus:not(:focus-visible),
+.qt-message:focus:not(:focus-visible),
+.qt-actions .button:focus:not(:focus-visible) {
+    outline: none;
+}
+
+/* High contrast mode support */
+@media (prefers-contrast: high) {
+
+    .qt-title-input,
+    .qt-message,
+    .qt-actions .button {
+        border-width: 2px;
+    }
+}
+
+/* ============================================================
+   EDITOR TOOLBAR (MyCode Buttons)
+   ============================================================ */
+
+.qt-editor-toolbar {
+    background: #f5f5f5;
+    border: 1px solid #ddd;
+    border-bottom: none;
+    border-radius: 4px 4px 0 0;
+    padding: 8px;
+    margin-bottom: 0;
+}
+
+.qt-editor-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 4px;
+    align-items: center;
+}
+
+.qt-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 32px;
+    height: 28px;
+    padding: 0 8px;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+    background: linear-gradient(to bottom, #fff, #f0f0f0);
+    color: #333;
+    font-size: 13px;
+    font-family: inherit;
+    cursor: pointer;
+    transition: all 0.15s ease;
+}
+
+.qt-btn:hover {
+    background: linear-gradient(to bottom, #f8f8f8, #e0e0e0);
+    border-color: #bbb;
+}
+
+.qt-btn:active {
+    background: #e0e0e0;
+    transform: translateY(1px);
+}
+
+.qt-separator {
+    color: #ccc;
+    margin: 0 4px;
+    font-size: 14px;
+}
+
+.qt-message {
+    border-radius: 0 0 4px 4px;
+}
+
+.qt-editor-wrapper label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: 600;
+    font-size: 13px;
+    color: #333;
+}
+
+/* ============================================================
+   POST ICONS
+   ============================================================ */
+
+.qt-posticons {
+    margin: 12px 0;
+    padding: 10px 12px;
+    background: #f9f9f9;
+    border: 1px solid #e8e8e8;
+    border-radius: 4px;
+}
+
+.qt-posticons strong {
+    display: inline-block;
+    margin-right: 10px;
+    font-size: 13px;
+    color: #555;
+}
+
+.qt-posticon-label {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    margin-right: 12px;
+    margin-bottom: 6px;
+    padding: 4px 8px;
+    background: #fff;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: all 0.15s ease;
+}
+
+.qt-posticon-label:hover {
+    border-color: #2185d0;
+    background: #f0f8ff;
+}
+
+.qt-posticon-label input[type="radio"] {
+    margin: 0;
+}
+
+.qt-posticon-label img {
+    max-width: 16px;
+    max-height: 16px;
+}
+
+/* ============================================================
+   CUSTOM FIELDS
+   ============================================================ */
+
+.qt-custom-field {
+    margin: 12px 0;
+    padding: 12px;
+    background: #f9f9f9;
+    border: 1px solid #e8e8e8;
+    border-radius: 4px;
+}
+
+.qt-custom-field label {
+    display: block;
+    margin-bottom: 6px;
+    font-weight: 600;
+    font-size: 13px;
+    color: #333;
+}
+
+.qt-field-desc {
+    display: block;
+    margin-bottom: 8px;
+    font-size: 12px;
+    color: #888;
+}
+
+.qt-custom-field .textbox,
+.qt-custom-field .textarea {
+    width: 100%;
+    padding: 8px 10px;
+    border: 1px solid #d4d4d5;
+    border-radius: 4px;
+    font-size: 13px;
+}
+
+.qt-custom-field .textbox:focus,
+.qt-custom-field .textarea:focus {
+    border-color: #2185d0;
+    outline: none;
+}
+
+.qt-inline-label {
+    display: inline-flex !important;
+    align-items: center;
+    gap: 6px;
+    margin-right: 12px;
+    font-weight: normal !important;
+    cursor: pointer;
+}
+
+/* ============================================================
+   CAPTCHA
+   ============================================================ */
+
+.qt-captcha {
+    margin: 12px 0;
+    padding: 12px;
+    background: #f9f9f9;
+    border: 1px solid #e8e8e8;
+    border-radius: 4px;
+}
+
+.qt-captcha strong {
+    display: block;
+    margin-bottom: 10px;
+    font-size: 13px;
+    color: #555;
+}
+
+.qt-captcha img {
+    display: block;
+    margin: 8px 0;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+}
+
+.qt-captcha input[type="text"] {
+    width: 200px;
+    padding: 8px 10px;
+    border: 1px solid #d4d4d5;
+    border-radius: 4px;
+    font-size: 13px;
+}
+
+/* ============================================================
+   ATTACHMENTS
+   ============================================================ */
+
+.qt-attachments {
+    margin: 12px 0;
+    padding: 12px;
+    background: #f9f9f9;
+    border: 1px solid #e8e8e8;
+    border-radius: 4px;
+}
+
+.qt-attachments strong {
+    display: block;
+    margin-bottom: 10px;
+    font-size: 13px;
+    color: #555;
+}
